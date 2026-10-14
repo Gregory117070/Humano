@@ -1,0 +1,208 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Human Body · El cuerpo humano</title>
+<style>
+:root{--bg:#fbf6f8;--card:#fff;--ink:#2a1d23;--mut:#6e5d65;--ac:#c2255c;--ac2:#fbe8ef;--hl:#e0531a;--bd:#ecd5de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1015;--card:#26181f;--ink:#f3e8ed;--mut:#b9a3ad;--ac:#f06595;--ac2:#3a2230;--bd:#4a2f3c}}
+:root[data-theme="dark"]{--bg:#1a1015;--card:#26181f;--ink:#f3e8ed;--mut:#b9a3ad;--ac:#f06595;--ac2:#3a2230;--bd:#4a2f3c}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:800px;margin:0 auto;padding:16px}
+h1{font-size:1.6rem;margin:.2em 0}h1 span{color:var(--ac)}
+h2{font-size:1.1rem;color:var(--ac);margin:0 0 8px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:12px 0}
+.tr{color:var(--mut);font-size:.88rem}
+select,button,input{font:inherit;color:var(--ink)}
+select,input{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px;max-width:100%}
+input{width:100%}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg button{background:var(--card);border:1px solid var(--bd);padding:6px 12px;border-radius:8px;cursor:pointer}
+.seg button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.tst{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:10px 16px;cursor:pointer}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0}
+.tab{background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:8px 12px;cursor:pointer}
+.tab.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--ac2);border:1px solid var(--bd);border-radius:12px;padding:8px 10px;cursor:pointer;text-align:center;min-width:92px;-webkit-tap-highlight-color:transparent}
+.chip .w{font-weight:600}.chip .t{font-size:.78rem;color:var(--mut)}
+.chip:active,.chip.play{background:var(--ac);color:#fff}.chip.play .t,.chip:active .t{color:#fff}
+.row{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--bd)}
+.row:first-of-type{border-top:0}
+.txt{flex:1}.txt .en{font-size:1.08rem}
+.wd{cursor:pointer;border-radius:5px;padding:0 1px;border-bottom:2px dotted var(--ac)}
+.wd:active,.wd.play{background:var(--ac2)}
+.spk{flex:none;width:46px;height:46px;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:1.3rem;cursor:pointer}
+.spk.play{outline:3px solid var(--hl)}
+footer{text-align:center;color:var(--mut);font-size:.9rem;padding:18px 0 28px}
+</style>
+</head>
+<body>
+<main>
+<h1>The Human <span>Body</span></h1>
+<p class="tr" style="margin:0">El cuerpo humano · <span id="cnt"></span> palabras</p>
+
+<div class="card">
+  <p style="margin:0 0 10px">👆 <b style="color:var(--ac)">Toca cualquier tarjeta con 🔊</b> para escuchar la palabra. En las oraciones toca cada palabra subrayada, o el <b style="color:var(--ac)">botón redondo</b> para oír la oración completa.</p>
+  <div class="bar"><button class="tst" id="tst">🔊 Probar sonido</button>
+  <label for="vz">Voz:</label><select id="vz"></select>
+  <span class="seg"><button id="v1" class="on">Normal</button><button id="v2">Lenta</button></span></div>
+  <p id="msg" class="tr" style="margin:8px 0 0"></p>
+  <p class="tr" style="margin:6px 0 0">Si no suena: sube el volumen multimedia, quita el modo silencio y abre la página en Chrome.</p>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<input id="q" type="search" placeholder="🔍 Buscar / Search (English o español)">
+<div id="box"></div>
+<footer>Docente: Jorge Ñañez · Área: Inglés</footer>
+</main>
+<script>
+var CATS=[
+{n:"Cabeza y sentidos · Head &amp; Senses",i:"🧑",g:[
+["Head &amp; face · Cabeza y cara","head=cabeza;skull=cráneo;hair=cabello;face=cara;forehead=frente;temple=sien;eyebrow=ceja;eyelash=pestaña;eye=ojo;eyelid=párpado;pupil=pupila;nose=nariz;nostril=fosa nasal;cheek=mejilla;mouth=boca;lips=labios;tongue=lengua;tooth=diente;teeth=dientes;gums=encías;chin=mentón;jaw=mandíbula;ear=oreja / oído;earlobe=lóbulo de la oreja;neck=cuello;throat=garganta;beard=barba;mustache=bigote;dimple=hoyuelo;freckles=pecas;wrinkles=arrugas"],
+["The five senses · Los cinco sentidos","sight=vista;hearing=oído;smell=olfato;taste=gusto;touch=tacto;to see=ver;to hear=oír;to smell=oler;to taste=saborear;to touch=tocar"]],
+s:[["I have brown eyes and black hair.","Tengo ojos marrones y cabello negro."],["She brushes her teeth three times a day.","Ella se cepilla los dientes tres veces al día."],["We smell with our nose and taste with our tongue.","Olemos con la nariz y saboreamos con la lengua."],["The brain is protected by the skull.","El cerebro está protegido por el cráneo."],["He has a beard and a mustache.","Él tiene barba y bigote."],["I have a sore throat and a headache.","Tengo dolor de garganta y dolor de cabeza."]]},
+{n:"Tronco · Torso",i:"🧍",g:[
+["Torso · Tronco","torso=torso;shoulder=hombro;chest=pecho;back=espalda;upper back=parte alta de la espalda;lower back=zona lumbar;spine=columna vertebral;waist=cintura;stomach=estómago;belly=barriga;abdomen=abdomen;belly button=ombligo;hip=cadera;rib=costilla;collarbone=clavícula;armpit=axila;buttocks=glúteos;side=costado;groin=ingle;skin=piel;skin color=color de piel"]],
+s:[["Your heart is in your chest.","Tu corazón está en tu pecho."],["He carries a heavy backpack on his back.","Él lleva una mochila pesada en la espalda."],["The spine protects the spinal cord.","La columna vertebral protege la médula espinal."],["I have a pain in my lower back.","Tengo un dolor en la zona lumbar."],["She puts the belt around her waist.","Ella se pone el cinturón en la cintura."],["Don't carry too much weight on your shoulders.","No cargues demasiado peso en los hombros."]]},
+{n:"Brazos y manos · Arms &amp; Hands",i:"✋",g:[
+["Arms · Brazos","arm=brazo;upper arm=parte superior del brazo;elbow=codo;forearm=antebrazo;wrist=muñeca;biceps=bíceps;triceps=tríceps;left arm=brazo izquierdo;right arm=brazo derecho"],
+["Hands · Manos","hand=mano;palm=palma;fist=puño;finger=dedo de la mano;fingers=dedos;thumb=pulgar;index finger=dedo índice;middle finger=dedo medio;ring finger=dedo anular;little finger=dedo meñique;fingernail=uña;fingertip=yema del dedo;knuckle=nudillo;left hand=mano izquierda;right hand=mano derecha"]],
+s:[["I broke my wrist when I fell.","Me fracturé la muñeca cuando me caí."],["Wash your hands with soap and water.","Lávate las manos con agua y jabón."],["She has long fingers and short nails.","Ella tiene dedos largos y uñas cortas."],["He bends his elbow to lift the weight.","Él dobla el codo para levantar el peso."],["Raise your right hand, please.","Levanta tu mano derecha, por favor."],["My biceps hurt after the workout.","Me duelen los bíceps después del entrenamiento."]]},
+{n:"Piernas y pies · Legs &amp; Feet",i:"🦵",g:[
+["Legs · Piernas","leg=pierna;thigh=muslo;knee=rodilla;kneecap=rótula;shin=espinilla;calf=pantorrilla;hamstring=músculo isquiotibial;ankle=tobillo;Achilles tendon=tendón de Aquiles;left leg=pierna izquierda;right leg=pierna derecha"],
+["Feet · Pies","foot=pie;feet=pies;heel=talón;sole=planta del pie;instep=empeine;arch=arco del pie;toe=dedo del pie;toes=dedos del pie;big toe=dedo gordo del pie;little toe=dedo meñique del pie;toenail=uña del pie;barefoot=descalzo"]],
+s:[["He hurt his knee playing soccer.","Se lastimó la rodilla jugando fútbol."],["My feet are tired after the long walk.","Mis pies están cansados después de la larga caminata."],["She twisted her ankle on the stairs.","Ella se torció el tobillo en las escaleras."],["The thigh is the strongest part of the leg.","El muslo es la parte más fuerte de la pierna."],["I have a blister on my heel.","Tengo una ampolla en el talón."],["Runners need strong calves and healthy toes.","Los corredores necesitan pantorrillas fuertes y dedos sanos."]]},
+{n:"Órganos · Organs",i:"🫀",g:[
+["Internal organs · Órganos internos","brain=cerebro;heart=corazón;lungs=pulmones;liver=hígado;stomach=estómago;kidneys=riñones;pancreas=páncreas;spleen=bazo;gallbladder=vesícula biliar;bladder=vejiga;thyroid=tiroides;diaphragm=diafragma;skin=piel;uterus=útero"],
+["Digestive &amp; respiratory tubes · Conductos","mouth=boca;throat=garganta;esophagus=esófago;small intestine=intestino delgado;large intestine=intestino grueso;intestines=intestinos;rectum=recto;appendix=apéndice;windpipe=tráquea;larynx=laringe;bronchi=bronquios;vocal cords=cuerdas vocales"]],
+s:[["The heart pumps blood through the body.","El corazón bombea sangre por todo el cuerpo."],["We breathe with our lungs.","Respiramos con los pulmones."],["The stomach digests the food.","El estómago digiere la comida."],["The kidneys clean the blood.","Los riñones limpian la sangre."],["The liver is the largest internal organ.","El hígado es el órgano interno más grande."],["The brain controls the whole body.","El cerebro controla todo el cuerpo."]]},
+{n:"Huesos, músculos y sistemas · Bones, Muscles &amp; Systems",i:"🦴",g:[
+["Bones &amp; joints · Huesos y articulaciones","skeleton=esqueleto;bone=hueso;skull=cráneo;spine=columna vertebral;vertebra=vértebra;rib cage=caja torácica;breastbone=esternón;shoulder blade=omóplato;collarbone=clavícula;humerus=húmero;radius=radio;ulna=cúbito;pelvis=pelvis;femur=fémur;kneecap=rótula;tibia=tibia;fibula=peroné;joint=articulación;cartilage=cartílago;ligament=ligamento;bone marrow=médula ósea"],
+["Muscles, blood &amp; nerves · Músculos, sangre y nervios","muscle=músculo;tendon=tendón;blood=sangre;blood vessel=vaso sanguíneo;artery=arteria;vein=vena;capillary=capilar;red blood cells=glóbulos rojos;white blood cells=glóbulos blancos;platelets=plaquetas;pulse=pulso;heartbeat=latido;nerve=nervio;spinal cord=médula espinal;cell=célula"],
+["Body systems · Sistemas del cuerpo","digestive system=sistema digestivo;respiratory system=sistema respiratorio;circulatory system=sistema circulatorio;nervous system=sistema nervioso;skeletal system=sistema esquelético;muscular system=sistema muscular;immune system=sistema inmunológico;urinary system=sistema urinario;endocrine system=sistema endocrino;reproductive system=sistema reproductor"]],
+s:[["An adult has 206 bones.","Un adulto tiene 206 huesos."],["Muscles help us move.","Los músculos nos ayudan a movernos."],["The femur is the longest bone in the body.","El fémur es el hueso más largo del cuerpo."],["Blood travels through arteries and veins.","La sangre viaja por arterias y venas."],["Nerves send messages to the brain.","Los nervios envían mensajes al cerebro."],["Tendons connect muscles to bones.","Los tendones unen los músculos con los huesos."]]}
+];
+
+function $(i){return document.getElementById(i)}
+function mk(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+function msg(t){$("msg").textContent=t}
+function clean(s){return s.replace(/[^A-Za-z'\-]/g,"")}
+
+var voices=[],voice=null,rate=0.9,synth=window.speechSynthesis,cur=null;
+function pickVoice(){
+  if(!synth)return;
+  voices=synth.getVoices().filter(function(v){return /^en[-_]/i.test(v.lang)});
+  var sel=$("vz");sel.innerHTML="";
+  if(!voices.length)return;
+  var pref=[/google us english/i,/natural|neural|online/i,/samantha|aria|jenny|zira|karen|serena|allison/i,/en[-_]US/i];
+  function score(v){for(var i=0;i<pref.length;i++){if(pref[i].test(v.name)||pref[i].test(v.lang))return 10-i}return 0}
+  voices.sort(function(a,b){return score(b)-score(a)});
+  voices.forEach(function(v,i){var o=mk("option");o.value=i;o.textContent=v.name+" ("+v.lang+")";sel.appendChild(o)});
+  voice=voices[0];
+}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice}
+$("vz").onchange=function(){voice=voices[this.value]};
+$("v1").onclick=function(){rate=0.9;this.classList.add("on");$("v2").classList.remove("on")};
+$("v2").onclick=function(){rate=0.6;this.classList.add("on");$("v1").classList.remove("on")};
+$("tst").onclick=function(){msg("Voces en inglés detectadas: "+voices.length+(synth?"":" (este navegador no tiene síntesis de voz)"));say("Hello! Let's learn the parts of the human body.",this)};
+
+function online(text,el){
+  try{
+    if(cur)cur.pause();
+    cur=new Audio("https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q="+encodeURIComponent(text));
+    cur.playbackRate=rate<0.8?0.75:1;
+    if(el){el.classList.add("play");cur.onended=cur.onerror=function(){el.classList.remove("play")}}
+    cur.play().catch(function(){msg("No se pudo reproducir el audio. Abre la página en Chrome con internet y sube el volumen.");if(el)el.classList.remove("play")});
+  }catch(e){if(el)el.classList.remove("play")}
+}
+function say(text,el){
+  if(cur)cur.pause();
+  if(!synth){msg("Este navegador no tiene voz integrada; usando audio en línea.");online(text,el);return}
+  var started=false,done=false;
+  function go(){
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang="en-US";if(voice){u.voice=voice;u.lang=voice.lang}
+    u.rate=rate;u.pitch=1;
+    u.onstart=function(){started=true};
+    u.onend=function(){done=true;if(el)el.classList.remove("play")};
+    u.onerror=function(e){
+      var was=done;done=true;
+      if(e.error!=="canceled"&&e.error!=="interrupted")msg("Error de voz: "+e.error);
+      if(el)el.classList.remove("play");
+      if(!was&&!started&&e.error!=="canceled"&&e.error!=="interrupted")online(text,el);
+    };
+    if(el)el.classList.add("play");
+    synth.speak(u);
+    setTimeout(function(){if(!started&&!done){done=true;synth.cancel();msg("La voz del teléfono no respondió; probando audio en línea…");online(text,el)}},1500);
+  }
+  if(synth.speaking||synth.pending){synth.cancel();setTimeout(go,80)}else go();
+}
+
+var total=0;
+CATS.forEach(function(c){c.g.forEach(function(g){total+=g[1].split(";").length})});
+$("cnt").textContent=total;
+
+function chipsFor(items){
+  var ch=mk("div","chips");
+  items.forEach(function(p){
+    var a=p.split("=");
+    var el=mk("div","chip",'<div class="w">🔊 '+a[0]+'</div><div class="t">'+a[1]+"</div>");
+    el.onclick=function(){say(a[0],el)};
+    ch.appendChild(el);
+  });
+  return ch;
+}
+var curTab=0;
+function show(k){
+  curTab=k;$("q").value="";
+  document.querySelectorAll(".tab").forEach(function(t,i){t.classList.toggle("on",i===k)});
+  var box=$("box");box.innerHTML="";
+  var c=CATS[k];
+  c.g.forEach(function(g){
+    var card=mk("div","card","<h2>"+g[0]+"</h2>");
+    card.appendChild(chipsFor(g[1].split(";")));
+    box.appendChild(card);
+  });
+  var sc=mk("div","card","<h2>Sentences · Oraciones</h2>");
+  c.s.forEach(function(p,i){
+    var r=mk("div","row"),t=mk("div","txt"),en=mk("div","en");
+    en.appendChild(mk("span","tr",(i+1)+". "));
+    p[0].split(" ").forEach(function(w){
+      var s=mk("span","wd",w);s.onclick=function(){say(clean(w),s)};
+      en.appendChild(s);en.appendChild(document.createTextNode(" "));
+    });
+    t.appendChild(en);t.appendChild(mk("div","tr",p[1]));
+    var b=mk("button","spk","🔊");b.setAttribute("aria-label","Escuchar oración completa");
+    b.onclick=function(){say(p[0],b)};
+    r.appendChild(t);r.appendChild(b);sc.appendChild(r);
+  });
+  box.appendChild(sc);
+}
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function search(){
+  var v=norm($("q").value.trim());
+  if(!v){show(curTab);return}
+  document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("on")});
+  var box=$("box");box.innerHTML="";var n=0;
+  CATS.forEach(function(c){c.g.forEach(function(g){
+    var items=g[1].split(";").filter(function(p){return norm(p).indexOf(v)>=0});
+    if(!items.length)return;
+    n+=items.length;
+    var card=mk("div","card","<h2>"+c.i+" "+g[0]+"</h2>");
+    card.appendChild(chipsFor(items));
+    box.appendChild(card);
+  })});
+  if(!n)box.appendChild(mk("div","card tr","No se encontró · Not found"));
+}
+$("q").oninput=search;
+CATS.forEach(function(c,i){
+  var t=mk("button","tab",c.i+" "+c.n);t.onclick=function(){show(i)};$("tabs").appendChild(t);
+});
+show(0);
+</script>
+</body>
+</html>
